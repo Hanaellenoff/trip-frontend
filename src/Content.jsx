@@ -1,4 +1,6 @@
 import axios from "axios";
+import { Signup } from "./Signup";
+import { Login } from "./Login";
 import { TripsIndex } from "./TripsIndex";
 import { useState, useEffect } from "react";
 
@@ -16,6 +18,8 @@ export function Content() {
 
   return (
     <div>
+      <Signup />
+      <Login />
       <TripsIndex trips={trips} />
     </div>
   );

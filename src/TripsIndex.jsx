@@ -4,7 +4,7 @@ export function TripsIndex(props) {
     <div>
       {props.trips.map((trip, index) => (
         <div key={index}>
-          <p>{trip.title}</p>
+          <h1>{trip.title}</h1>
           <img src={trip.image_url} />
         </div>
       ))}
