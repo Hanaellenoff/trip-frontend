@@ -7,10 +7,15 @@ import { TripsIndex } from "./TripsIndex";
 import { PlacesIndex } from "./PlacesIndex";
 import { TripsNew } from "./TripsNew";
 import { PlacesNew } from "./PlacesNew";
+import { Modal } from "./Modal";
+import { TripsShow } from "./TripsShow";
 
 export function Content() {
   const [trips, setTrips] = useState([]);
   const [places, setPlaces] = useState([]);
+  const [isTripsShowVisable, setisTripsShowVisable] = useState(false);
+  const [currentTrip, setCurrentTrip] = useState({});
+
   const handleCreateTrip = (params, successCallBack) => {
     console.log("handleCreateTrip", params);
     axios.post("http://localhost:3000/trips.json", params).then((response) => {
@@ -29,6 +34,18 @@ export function Content() {
     });
   };
 
+  // const handleDestroyTrip = (id) => {
+  //   console.log("handleDestroyTrip", id)
+  //   axios.delete(`http://localhost:3000/trips/${id}.json`)
+  //   setTrips(trips.filter((trip) => trip.id, !== id));
+  // }
+  const handleShowTrip = (trip) => {
+    setisTripsShowVisable(true);
+    setCurrentTrip(trip);
+  };
+  const handleCloseTrip = () => {
+    setisTripsShowVisable(false);
+  };
   useEffect(() => {
     const handleTripsIndex = () => {
       console.log("handleTripsIndex");
@@ -54,9 +71,15 @@ export function Content() {
       <Signup />
       <Login />
       <LogoutLink />
+      <Modal show={isTripsShowVisable} onClose={handleCloseTrip}>
+        <TripsShow trip={currentTrip} />
+      </Modal>
       <TripsNew onCreateTrip={handleCreateTrip} />
       <PlacesNew onCreatePlace={handleCreatePlace} />
-      <TripsIndex trips={trips} />
+      <TripsIndex
+        trips={trips}
+        onShowTrip={handleShowTrip} //onDestroyTrip={handleDestroyTrip}
+      />
       <PlacesIndex places={places} />
     </div>
   );
