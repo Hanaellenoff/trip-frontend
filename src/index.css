@@ -3,4 +3,10 @@ html {
 }
 img{
   width: 300px;
-  }
+}
+
+.card{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 50px
+}
