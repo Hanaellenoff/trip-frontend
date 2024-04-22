@@ -5,6 +5,7 @@ export function TripsIndex(props) {
       {props.trips.map((trip, index) => (
         <div key={index}>
           <h1>{trip.title}</h1>
+          <p>{trip.id}</p>
           <img src={trip.image_url} />
         </div>
       ))}

@@ -6,6 +6,7 @@ import { LogoutLink } from "./LogoutLink";
 import { TripsIndex } from "./TripsIndex";
 import { PlacesIndex } from "./PlacesIndex";
 import { TripsNew } from "./TripsNew";
+import { PlacesNew } from "./PlacesNew";
 
 export function Content() {
   const [trips, setTrips] = useState([]);
@@ -18,6 +19,16 @@ export function Content() {
       successCallBack();
     });
   };
+
+  const handleCreatePlace = (params, successCallBack) => {
+    console.log("handleCreatePlace", params);
+    axios.post("http://localhost:3000/places.json", params).then((response) => {
+      console.log(response.data);
+      setPlaces([...places, response.data]);
+      successCallBack();
+    });
+  };
+
   useEffect(() => {
     const handleTripsIndex = () => {
       console.log("handleTripsIndex");
@@ -44,6 +55,7 @@ export function Content() {
       <Login />
       <LogoutLink />
       <TripsNew onCreateTrip={handleCreateTrip} />
+      <PlacesNew onCreatePlace={handleCreatePlace} />
       <TripsIndex trips={trips} />
       <PlacesIndex places={places} />
     </div>
