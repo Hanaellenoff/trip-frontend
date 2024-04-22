@@ -34,11 +34,19 @@ export function Content() {
     });
   };
 
-  // const handleDestroyTrip = (id) => {
-  //   console.log("handleDestroyTrip", id)
-  //   axios.delete(`http://localhost:3000/trips/${id}.json`)
-  //   setTrips(trips.filter((trip) => trip.id, !== id));
-  // }
+  const handleDestroyTrip = (id) => {
+    console.log("handleDestroyTrip", id);
+    axios
+      .delete(`http://localhost:3000/trips/${id}.json`)
+      .then((response) => {
+        setTrips(trips.filter((trip) => trip.id !== id));
+        handleCloseTrip();
+      })
+      .catch((error) => {
+        // Handle errors, such as displaying an error message
+        console.error("Error deleting trip:", error);
+      });
+  };
   const handleShowTrip = (trip) => {
     setisTripsShowVisable(true);
     setCurrentTrip(trip);
@@ -46,6 +54,7 @@ export function Content() {
   const handleCloseTrip = () => {
     setisTripsShowVisable(false);
   };
+
   useEffect(() => {
     const handleTripsIndex = () => {
       console.log("handleTripsIndex");
@@ -76,10 +85,7 @@ export function Content() {
       </Modal>
       <TripsNew onCreateTrip={handleCreateTrip} />
       <PlacesNew onCreatePlace={handleCreatePlace} />
-      <TripsIndex
-        trips={trips}
-        onShowTrip={handleShowTrip} //onDestroyTrip={handleDestroyTrip}
-      />
+      <TripsIndex trips={trips} trip={currentTrip} onShowTrip={handleShowTrip} onDestroyTrip={handleDestroyTrip} />
       <PlacesIndex places={places} />
     </div>
   );

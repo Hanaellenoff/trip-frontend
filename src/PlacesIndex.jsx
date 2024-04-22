@@ -5,8 +5,8 @@ export function PlacesIndex(props) {
       <h1>Places</h1>
       {props.places.map((place, index) => (
         <div key={index}>
-          <p>Trip Number: {place.trip_id}</p>
           <h2>{place.name}</h2>
+          <p>Trip Number: {place.trip_id}</p>
           <p>{place.address}</p>
           <p>{place.description}</p>
           <img src={place.image_url} />
