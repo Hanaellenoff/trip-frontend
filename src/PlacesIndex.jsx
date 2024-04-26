@@ -16,6 +16,34 @@ export function PlacesIndex(props) {
             <p>{place.address}</p>
             <p>{place.description}</p>
             <img src={place.image_url} />
+
+            {/* form */}
+            <form>
+              <h1>Edit Place</h1>
+              <div>
+                Name: <input defaultValue={place.name} name="name" type="text" />
+              </div>
+
+              <div>
+                Trip Number: <input defaultValue={place.trip_id} name="trip_id" type="integer" />
+              </div>
+
+              <div>
+                Address: <input defaultValue={place.address} name="address" type="text" />
+              </div>
+
+              <div>
+                Description: <input defaultValue={place.description} name="description" type="text" />
+              </div>
+
+              <div>
+                Image_url: <input defaultValue={place.image_url} name="image_url" type="img" />
+              </div>
+
+              <button className="button_style" type="onSubmit">
+                Update
+              </button>
+            </form>
           </div>
         ))}
       </div>
