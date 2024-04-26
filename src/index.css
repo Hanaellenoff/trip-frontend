@@ -5,8 +5,10 @@ img{
   width: 300px;
 }
 
-.card{
+/* .card{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 50px
 }
+ */
+

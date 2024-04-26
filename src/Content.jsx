@@ -78,7 +78,7 @@ export function Content() {
   }, []);
 
   return (
-    <div>
+    <div className="container">
       <Signup />
       <Login />
       <LogoutLink />
