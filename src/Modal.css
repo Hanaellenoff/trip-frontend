@@ -11,20 +11,27 @@
 
 .modal-main {
   position: fixed;
-  background: white;
+  background: rgb(2, 135, 80);
   width: 80%;
   height: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 1em;
+  max-height: 80%;
+  overflow-y: auto; /* Enable vertical scrolling */
 }
 
 .modal-main button.close {
   font-size: 2em;
   background: none;
   border: none;
-  position: absolute;
+  position: fixed;
   top: 0em;
   right: 0.2em;
+  align-items: center;
+}
+
+html {
+  scroll-behavior: smooth;
 }

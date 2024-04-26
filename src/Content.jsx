@@ -84,11 +84,11 @@ export function Content() {
       <LogoutLink />
       <Modal show={isTripsShowVisable} onClose={handleCloseTrip}>
         <TripsShow trip={currentTrip} />
+        <PlacesIndex places={places} trips={currentTrip} />
       </Modal>
       <TripsNew onCreateTrip={handleCreateTrip} />
       <PlacesNew onCreatePlace={handleCreatePlace} />
       <TripsIndex trips={trips} trip={currentTrip} onShowTrip={handleShowTrip} onDestroyTrip={handleDestroyTrip} />
-      <PlacesIndex places={places} />
     </div>
   );
 }
