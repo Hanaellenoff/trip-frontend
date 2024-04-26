@@ -5,10 +5,11 @@ img{
   width: 300px;
 }
 
-/* .card{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px
-}
- */
 
+.button_style {
+  padding: 1em;
+  border-radius: 1em;
+  border: 1px;
+  background-color: rgb(49, 227, 200) !important;
+  color: rgb(101, 78, 255);
+}

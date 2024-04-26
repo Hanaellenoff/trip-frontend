@@ -15,7 +15,9 @@ export function TripsNew(props) {
         <div>
           image_url: <input name="image_url" type="img" />
         </div>
-        <button type="submit">Add new</button>
+        <button className="button_style" type="submit">
+          Add new
+        </button>
       </form>
     </div>
   );

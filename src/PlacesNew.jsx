@@ -29,7 +29,9 @@ export function PlacesNew(props) {
           Image_url: <input name="image_url" type="img" />
         </div>
 
-        <button type="onSubmit">Add new</button>
+        <button className="button_style" type="onSubmit">
+          Add new
+        </button>
       </form>
     </div>
   );
