@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 export function TripsIndex(props) {
-  const handleClick = () => {
-    console.log("HERE:", props.trips);
-    props.onDestroyTrip(props.trips.id);
+  const handleClick = (tripId) => {
+    console.log("HERE:", tripId);
+    props.onDestroyTrip(tripId);
   };
 
   return (
@@ -13,7 +13,7 @@ export function TripsIndex(props) {
           <p>Trip Number: {trip.id}</p>
           <img src={trip.image_url} />
           <button onClick={() => props.onShowTrip(trip)}>More Info</button>
-          <button onClick={handleClick}>Delete Trip</button>
+          <button onClick={() => handleClick(trip.id)}>Delete Trip</button>
         </div>
       ))}
     </div>

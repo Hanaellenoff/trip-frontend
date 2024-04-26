@@ -39,6 +39,7 @@ export function Content() {
     axios
       .delete(`http://localhost:3000/trips/${id}.json`)
       .then((response) => {
+        // Filter out the deleted trip by comparing trip IDs
         setTrips(trips.filter((trip) => trip.id !== id));
         handleCloseTrip();
       })
@@ -47,6 +48,7 @@ export function Content() {
         console.error("Error deleting trip:", error);
       });
   };
+
   const handleShowTrip = (trip) => {
     setisTripsShowVisable(true);
     setCurrentTrip(trip);
