@@ -57,6 +57,21 @@ export function Content() {
     setisTripsShowVisable(false);
   };
 
+  const handleUpdatePlace = (params, id) => {
+    console.log(params);
+    axios.patch(`http://localhost:3000/places/${id}.json`, params).then((response) => {
+      setPlaces(
+        places.map((place) => {
+          if (place.id === params.id) {
+            return response.data;
+          } else {
+            return place;
+          }
+        })
+      );
+    });
+  };
+
   useEffect(() => {
     const handleTripsIndex = () => {
       console.log("handleTripsIndex");
@@ -84,10 +99,10 @@ export function Content() {
       <LogoutLink />
       <Modal show={isTripsShowVisable} onClose={handleCloseTrip}>
         <TripsShow trip={currentTrip} />
-        <PlacesIndex places={places} trips={currentTrip} />
+        <PlacesIndex places={places} trips={currentTrip} onUpdatePlace={handleUpdatePlace} />
+        <PlacesNew onCreatePlace={handleCreatePlace} />
       </Modal>
       <TripsNew onCreateTrip={handleCreateTrip} />
-      <PlacesNew onCreatePlace={handleCreatePlace} />
       <TripsIndex trips={trips} trip={currentTrip} onShowTrip={handleShowTrip} onDestroyTrip={handleDestroyTrip} />
     </div>
   );
