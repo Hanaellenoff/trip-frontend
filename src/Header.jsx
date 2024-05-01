@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export function Header() {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -19,25 +21,21 @@ export function Header() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
-                Home
-              </a>
+              <Link to="/">Home</Link>
             </li>
+
             <li className="nav-item">
-              <a className="nav-link" href="#">
-                Signup
-              </a>
+              <Link to="/signup">Signup</Link>
             </li>
+
             <li className="nav-item">
-              <a className="nav-link" href="/login">
-                Login
-              </a>
+              <Link to="/login">Login</Link>
             </li>
+
             <li className="nav-item">
-              <a className="nav-link" href="Signup">
-                Logout
-              </a>
+              <Link to="/logout">Logout</Link>
             </li>
+
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
@@ -69,6 +67,7 @@ export function Header() {
                 </li>
               </ul>
             </li>
+
             {/* <li className="nav-item">
               <a className="nav-link disabled" aria-disabled="true">
                 Disabled

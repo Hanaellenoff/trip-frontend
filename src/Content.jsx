@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { LogoutLink } from "./LogoutLink";
@@ -93,17 +94,31 @@ export function Content() {
   }, []);
 
   return (
-    <div className="container">
-      <Signup />
-      <Login />
-      <LogoutLink />
-      <Modal show={isTripsShowVisable} onClose={handleCloseTrip}>
-        <TripsShow trip={currentTrip} />
-        <PlacesIndex places={places} trips={currentTrip} onUpdatePlace={handleUpdatePlace} />
-        <PlacesNew onCreatePlace={handleCreatePlace} />
-      </Modal>
-      <TripsNew onCreateTrip={handleCreateTrip} />
-      <TripsIndex trips={trips} trip={currentTrip} onShowTrip={handleShowTrip} onDestroyTrip={handleDestroyTrip} />
-    </div>
+    <main>
+      <Routes>
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<LogoutLink />} />
+        <Route
+          path="/"
+          element={
+            <TripsIndex
+              trips={trips}
+              trip={currentTrip}
+              onShowTrip={handleShowTrip}
+              onDestroyTrip={handleDestroyTrip}
+            />
+          }
+        />
+      </Routes>
+      <div className="container">
+        <Modal show={isTripsShowVisable} onClose={handleCloseTrip}>
+          <TripsShow trip={currentTrip} />
+          <PlacesIndex places={places} trips={currentTrip} onUpdatePlace={handleUpdatePlace} />
+          <PlacesNew onCreatePlace={handleCreatePlace} />
+        </Modal>
+        <TripsNew onCreateTrip={handleCreateTrip} />
+      </div>
+    </main>
   );
 }
