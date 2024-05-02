@@ -102,12 +102,15 @@ export function Content() {
         <Route
           path="/"
           element={
-            <TripsIndex
-              trips={trips}
-              trip={currentTrip}
-              onShowTrip={handleShowTrip}
-              onDestroyTrip={handleDestroyTrip}
-            />
+            <>
+              <TripsNew onCreateTrip={handleCreateTrip} />
+              <TripsIndex
+                trips={trips}
+                trip={currentTrip}
+                onShowTrip={handleShowTrip}
+                onDestroyTrip={handleDestroyTrip}
+              />
+            </>
           }
         />
       </Routes>
@@ -117,7 +120,6 @@ export function Content() {
           <PlacesIndex places={places} trips={currentTrip} onUpdatePlace={handleUpdatePlace} />
           <PlacesNew onCreatePlace={handleCreatePlace} />
         </Modal>
-        <TripsNew onCreateTrip={handleCreateTrip} />
       </div>
     </main>
   );
