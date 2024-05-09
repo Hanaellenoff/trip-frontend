@@ -50,7 +50,9 @@ export function TripsIndex(props) {
                   }}
                 >
                   <i
-                    className={isFavorited.includes(trip.id) ? "star-filled fa fa-star" : "star-not-filled fa fa-star"}
+                    className={
+                      isFavorited.includes(trip.id) ? "star-filled fa fa-star" : "star-not-filled fa-regular fa-star"
+                    }
                     aria-hidden="true"
                   ></i>
                 </div>

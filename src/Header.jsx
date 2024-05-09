@@ -21,19 +21,19 @@ export function Header() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link to="/">Home</Link>
+              <Link to="/">Home </Link>
             </li>
 
             <li className="nav-item">
-              <Link to="/signup">Signup</Link>
+              <Link to="/signup">Signup </Link>
             </li>
 
             <li className="nav-item">
-              <Link to="/login">Login</Link>
+              <Link to="/login">Login </Link>
             </li>
 
             <li className="nav-item">
-              <Link to="/logout">Logout</Link>
+              <Link to="/logout">Logout </Link>
             </li>
 
             <li className="nav-item dropdown">

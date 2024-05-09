@@ -16,15 +16,23 @@ img{
   color: rgb(101, 78, 255);
 }
 
+.button_style:hover {
+  color: rgb(49, 227, 200); 
+  background-color: rgb(101, 78, 255) !important;
+}
+
 .star-filled {
   color: yellow;
+  /* border: 2px black; */
+  border-width: 5px;
+  display: inline-block;
 }
 /* .star-filled:before {
   color: yellow;
 } */
 .star-not-filled {
   color: black;  
-  display: inline-block;
+  background-color: white;
 }
 .star-not-filled:hover {
   color: yellow;
