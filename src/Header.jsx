@@ -4,8 +4,8 @@ export function Header() {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
-          Navbar
+        <a className="navbar-brand" href="/">
+          AdventureAisle
         </a>
         <button
           className="navbar-toggler"
@@ -44,27 +44,27 @@ export function Header() {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Dropdown
+                Profile
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <a className="dropdown-item" href="#">
-                    Action
+                  <a className="dropdown-item" href="/favorites">
+                    Favorites
                   </a>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
-                    Another action
+                    My Trips
                   </a>
                 </li>
                 <li>
                   <hr className="dropdown-divider" />
                 </li>
-                <li>
+                {/* <li>
                   <a className="dropdown-item" href="#">
                     Something else here
                   </a>
-                </li>
+                </li> */}
               </ul>
             </li>
 

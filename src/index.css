@@ -15,3 +15,45 @@ img{
   background-color: rgb(49, 227, 200) !important;
   color: rgb(101, 78, 255);
 }
+
+.star-filled {
+  color: yellow;
+}
+/* .star-filled:before {
+  color: yellow;
+} */
+.star-not-filled {
+  color: black;  
+  display: inline-block;
+}
+.star-not-filled:hover {
+  color: yellow;
+}
+
+/* .star {
+  visibility:hidden;
+  font-size:30px;
+  cursor:pointer;
+  color: yellow;
+}
+.star:before {
+ content: "\2605";
+ position: absolute;
+ visibility:visible;
+}
+.star:checked:before {
+ content: "\2606";
+ position: absolute;
+ color: black;
+} */
+
+
+
+
+
+
+
+
+
+
+

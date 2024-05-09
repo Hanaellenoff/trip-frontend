@@ -52,7 +52,13 @@ export function PlacesIndex(props) {
               Image_url: <input defaultValue={place.image_url} name="image_url" type="img" />
             </div>
 
-            <button className="button_style" type="onSubmit">
+            <button
+              onClick={() => {
+                window.location.reload();
+              }}
+              className="button_style"
+              type="onSubmit"
+            >
               Update
             </button>
           </form>

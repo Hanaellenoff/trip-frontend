@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { TRIPS_API_URL, PLACES_API_URL } from "./config";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { LogoutLink } from "./LogoutLink";
@@ -10,16 +11,18 @@ import { TripsNew } from "./TripsNew";
 import { PlacesNew } from "./PlacesNew";
 import { Modal } from "./Modal";
 import { TripsShow } from "./TripsShow";
+import { FavoritesIndex } from "./FavoritesIndex";
 
 export function Content() {
   const [trips, setTrips] = useState([]);
   const [places, setPlaces] = useState([]);
   const [isTripsShowVisable, setisTripsShowVisable] = useState(false);
   const [currentTrip, setCurrentTrip] = useState({});
+  const [favorites, setFavorites] = useState([]);
 
   const handleCreateTrip = (params, successCallBack) => {
     console.log("handleCreateTrip", params);
-    axios.post("http://localhost:3000/trips.json", params).then((response) => {
+    axios.post(TRIPS_API_URL, params).then((response) => {
       console.log(response.data);
       setTrips([...trips, response.data]);
       successCallBack();
@@ -28,7 +31,7 @@ export function Content() {
 
   const handleCreatePlace = (params, successCallBack) => {
     console.log("handleCreatePlace", params);
-    axios.post("http://localhost:3000/places.json", params).then((response) => {
+    axios.post(PLACES_API_URL, params).then((response) => {
       console.log(response.data);
       setPlaces([...places, response.data]);
       successCallBack();
@@ -76,21 +79,30 @@ export function Content() {
   useEffect(() => {
     const handleTripsIndex = () => {
       console.log("handleTripsIndex");
-      axios.get("http://localhost:3000/trips.json").then((response) => {
+      axios.get(TRIPS_API_URL).then((response) => {
         console.log("axios");
         setTrips(response.data);
       });
     };
     const handlePlacesIndex = () => {
       console.log("handlePlacesndex");
-      axios.get("http://localhost:3000/places.json").then((response) => {
+      axios.get(PLACES_API_URL).then((response) => {
         console.log("Places data:", response.data);
         setPlaces(response.data);
       });
     };
 
+    const handleFavoritesIndex = () => {
+      console.log("handleFavoritesIndex");
+      axios.get("http://localhost:3000/favorites").then((response) => {
+        console.log(response.data);
+        setFavorites(response.data);
+      });
+    };
+
     handleTripsIndex();
     handlePlacesIndex();
+    handleFavoritesIndex();
   }, []);
 
   return (
@@ -99,12 +111,14 @@ export function Content() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<LogoutLink />} />
+        <Route path="/favorites" element={<FavoritesIndex favorites={favorites} />} />
         <Route
           path="/"
           element={
             <>
               <TripsNew onCreateTrip={handleCreateTrip} />
               <TripsIndex
+                favorites={favorites}
                 trips={trips}
                 trip={currentTrip}
                 onShowTrip={handleShowTrip}
