@@ -15,3 +15,16 @@ img{
   background-color: rgb(49, 227, 200) !important;
   color: rgb(101, 78, 255);
 }
+
+.button_style:hover {
+  color: rgb(49, 227, 200); 
+  background-color: rgb(101, 78, 255) !important;
+}
+/* 
+.btn-secondary:hover .bi-heart-fill {
+  opacity: 1;
+} */
+
+.hover-effect .bi-heart-fill {
+  opacity: 1;
+}

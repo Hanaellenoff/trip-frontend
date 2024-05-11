@@ -20,18 +20,23 @@
   padding: 1em;
   max-height: 80%;
   overflow-y: auto; /* Enable vertical scrolling */
+  /* z-index: 1001; */
 }
 
 .modal-main button.close {
   font-size: 2em;
   background: none;
   border: none;
-  position: fixed;
-  top: 0em;
+  position: fixed; 
+  top: 0.2em;
   right: 0.2em;
   align-items: center;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+#button {
+  position: fixed !important;
 }
