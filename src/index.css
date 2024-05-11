@@ -20,48 +20,11 @@ img{
   color: rgb(49, 227, 200); 
   background-color: rgb(101, 78, 255) !important;
 }
-
-.star-filled {
-  color: yellow;
-  /* border: 2px black; */
-  border-width: 5px;
-  display: inline-block;
-}
-/* .star-filled:before {
-  color: yellow;
-} */
-.star-not-filled {
-  color: black;  
-  background-color: white;
-}
-.star-not-filled:hover {
-  color: yellow;
-}
-
-/* .star {
-  visibility:hidden;
-  font-size:30px;
-  cursor:pointer;
-  color: yellow;
-}
-.star:before {
- content: "\2605";
- position: absolute;
- visibility:visible;
-}
-.star:checked:before {
- content: "\2606";
- position: absolute;
- color: black;
+/* 
+.btn-secondary:hover .bi-heart-fill {
+  opacity: 1;
 } */
 
-
-
-
-
-
-
-
-
-
-
+.hover-effect .bi-heart-fill {
+  opacity: 1;
+}

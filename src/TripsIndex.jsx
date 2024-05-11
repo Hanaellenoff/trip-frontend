@@ -2,6 +2,7 @@
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import "@fortawesome/fontawesome-free/css/all.css";
 
 export function TripsIndex(props) {
@@ -32,8 +33,8 @@ export function TripsIndex(props) {
       <div className="row">
         {props.trips.map((trip, index) => (
           <div key={index} className="col-md-4 mb-4">
-            <div className="card">
-              <img src={trip.image_url} className="card-img-top" alt="Trip" />
+            <div className="card h-100">
+              <img src={trip.image_url} className="card-img-top h-100" alt="Trip" />
               <div className="card-body">
                 <h5 className="card-title">{trip.title}</h5>
                 <p className="card-text">Trip Number: {trip.id}</p>
@@ -44,16 +45,28 @@ export function TripsIndex(props) {
                   Delete Trip
                 </button>
                 <div
+                  className={`btn btn-secondary bg-transparent border-0`}
                   onClick={() => {
                     handleFavorite(trip.id);
                     window.location.reload();
                   }}
+                  style={{ position: "relative" }}
                 >
                   <i
-                    className={
-                      isFavorited.includes(trip.id) ? "star-filled fa fa-star" : "star-not-filled fa-regular fa-star"
-                    }
-                    aria-hidden="true"
+                    className={`bi ${
+                      isFavorited.includes(trip.id) ? "bi-heart-fill text-danger fs-4" : "bi-heart text-black fs-4"
+                    }`}
+                    style={{ transition: "color 0.3s" }}
+                  ></i>
+                  <i // Add another heart icon for hover effect
+                    className={`bi bi-heart-fill text-danger fs-4`}
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      opacity: 0,
+                      transition: "opacity 0.3s",
+                    }}
                   ></i>
                 </div>
               </div>
