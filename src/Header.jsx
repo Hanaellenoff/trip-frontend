@@ -20,20 +20,16 @@ export function Header() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <Link to="/">Home </Link>
+            <li className="dropdown-item">
+              <a className="nav-link active" href="/">
+                Home
+              </a>
             </li>
 
-            <li className="nav-item">
-              <Link to="/signup">Signup </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link to="/login">Login </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link to="/logout">Logout </Link>
+            <li>
+              <a className="nav-link active" href="/favorites">
+                Favorites
+              </a>
             </li>
 
             <li className="nav-item dropdown">
@@ -48,13 +44,18 @@ export function Header() {
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <a className="dropdown-item" href="/favorites">
-                    Favorites
+                  <a className="dropdown-item" href="/signup">
+                    Signup
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
-                    My Trips
+                  <a className="dropdown-item" href="/login">
+                    Login
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="/logout">
+                    Logout
                   </a>
                 </li>
                 <li>

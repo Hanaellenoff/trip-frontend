@@ -1,13 +1,14 @@
 html {
   scroll-behavior: smooth;
 }
+
 img{
   width: 200px;
 }
 #root {
  background-image: url("https://images.unsplash.com/photo-1504309092620-4d0ec726efa4?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
- /* background-repeat: no-repeat; */
 }
+
 .button_style {
   padding: 1em;
   border-radius: 1em;
@@ -19,12 +20,10 @@ img{
 .button_style:hover {
   color: rgb(49, 227, 200); 
   background-color: rgb(101, 78, 255) !important;
+  cursor: pointer;
 }
-/* 
-.btn-secondary:hover .bi-heart-fill {
-  opacity: 1;
-} */
 
-.hover-effect .bi-heart-fill {
+.bi-heart-fill {
   opacity: 1;
+  cursor: pointer;
 }
