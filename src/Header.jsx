@@ -32,6 +32,12 @@ export function Header() {
               </a>
             </li>
 
+            <li>
+              <a className="nav-link active" href="/mytrips">
+                My Trips
+              </a>
+            </li>
+
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"

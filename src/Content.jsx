@@ -12,6 +12,7 @@ import { PlacesNew } from "./PlacesNew";
 import { Modal } from "./Modal";
 import { TripsShow } from "./TripsShow";
 import { FavoritesIndex } from "./FavoritesIndex";
+import { MyTripsIndex } from "./MyTripsIndex";
 
 export function Content() {
   const [trips, setTrips] = useState([]);
@@ -19,6 +20,7 @@ export function Content() {
   const [isTripsShowVisable, setisTripsShowVisable] = useState(false);
   const [currentTrip, setCurrentTrip] = useState({});
   const [favorites, setFavorites] = useState([]);
+  const [myTrips, setMyTrips] = useState([]);
 
   const handleCreateTrip = (params, successCallBack) => {
     console.log("handleCreateTrip", params);
@@ -99,10 +101,18 @@ export function Content() {
         setFavorites(response.data);
       });
     };
+    const handleMyTripsIndex = () => {
+      console.log("handleMy_TripsIndex");
+      axios.get("http://localhost:3000/my_trips").then((response) => {
+        console.log(response.data);
+        setMyTrips(response.data);
+      });
+    };
 
     handleTripsIndex();
     handlePlacesIndex();
     handleFavoritesIndex();
+    handleMyTripsIndex();
   }, []);
 
   return (
@@ -111,20 +121,22 @@ export function Content() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<LogoutLink />} />
-        <Route path="/favorites" element={<FavoritesIndex favorites={favorites} />} />
+        <Route path="/favorites" element={<FavoritesIndex favorites={favorites} onShowTrip={handleShowTrip} />} />
+        <Route path="/mytrips" element={<MyTripsIndex myTrips={myTrips} onShowTrip={handleShowTrip} />} />
         <Route
           path="/"
           element={
-            <>
+            <div className="">
               <TripsNew onCreateTrip={handleCreateTrip} />
               <TripsIndex
+                myTrips={myTrips}
                 favorites={favorites}
                 trips={trips}
                 trip={currentTrip}
                 onShowTrip={handleShowTrip}
                 onDestroyTrip={handleDestroyTrip}
               />
-            </>
+            </div>
           }
         />
       </Routes>

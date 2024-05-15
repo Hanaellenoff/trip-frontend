@@ -7,6 +7,7 @@ img{
 }
 #root {
  background-image: url("https://images.unsplash.com/photo-1504309092620-4d0ec726efa4?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
 .button_style {
@@ -27,3 +28,88 @@ img{
   opacity: 1;
   cursor: pointer;
 }
+
+.navbar-brand {
+  transform: translateX(-50%);
+  left: 50%;
+  position: absolute;
+}
+
+.navbar-nav > li.navbar-left {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 11px;
+}
+
+.navbar-brand {
+  padding: 0px;
+}
+.navbar-brand>img {
+  height: 90%;
+  width: auto;
+}
+
+#bannerimage {
+  width: 100%;
+  /* background-image: url(https://c4.wallpaperflare.com/wallpaper/1024/100/989/coconut-tree-with-golden-sand-wallpaper-preview.jpg); */
+  background-repeat: no-repeat;
+  height: 300px;
+  background-color: rgb(13, 186, 160);
+  background-position: center;
+}
+
+.banner {
+  background: rgb(178, 224, 250);
+  padding: 20px;
+  border-radius: 50px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  overflow: hidden; /* Ensures the banner expands to contain floated elements */
+}
+
+.form-container {
+  float: left; /* Float the form to the left */
+  padding: 20px;
+  border-radius: 50px; /* Match the banner's border-radius */
+  box-shadow: inherit; /* Inherit the box-shadow from the banner */
+  background: inherit; /* Inherit the background color from the banner */
+}
+
+
+
+
+.form-group {
+  margin-bottom: 15px; /* Add spacing between form elements */
+  display: flex;
+  flex-direction: column; /* Ensure vertical alignment */
+}
+
+.label {
+  display: block; /* Ensure labels are displayed on their own line */
+}
+
+.form-control {
+  width: 100%; /* Make inputs fill their container */
+  padding: 8px;
+  margin-top: 5px; /* Add spacing between inputs */
+}
+
+.button_style {
+  background-color: #ffcc00; /* Yellow color for the button */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: flex-start; /* Align button to the start of the container */
+}
+
+
+.navbar {
+  background: linear-gradient(to right, #66ccff, #ffff99); /* Blue to yellow gradient */
+}
+
+
