@@ -87,6 +87,7 @@ export function TripsIndex(props) {
                     ></i>
                   </div>
                   <button
+                    className="button_style"
                     onClick={() => {
                       handleMyTrips(trip.id);
                       window.location.reload();

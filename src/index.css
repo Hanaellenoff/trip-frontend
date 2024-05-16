@@ -48,15 +48,6 @@ img{
   width: auto;
 }
 
-#bannerimage {
-  width: 100%;
-  /* background-image: url(https://c4.wallpaperflare.com/wallpaper/1024/100/989/coconut-tree-with-golden-sand-wallpaper-preview.jpg); */
-  background-repeat: no-repeat;
-  height: 300px;
-  background-color: rgb(13, 186, 160);
-  background-position: center;
-}
-
 .banner {
   background: rgb(178, 224, 250);
   padding: 20px;
@@ -112,4 +103,13 @@ img{
   background: linear-gradient(to right, #66ccff, #ffff99); /* Blue to yellow gradient */
 }
 
-
+#floating-form {
+  position: absolute;
+  top: 50px; /* Adjust as needed */
+  right: 20px; /* Adjust as needed */
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
