@@ -1,6 +1,40 @@
 import { Link } from "react-router-dom";
 
 export function Header() {
+  let authenticationLinks;
+  let hanaLink;
+  if (localStorage.jwt === undefined) {
+    authenticationLinks = (
+      <>
+        <li>
+          <Link className="dropdown-item" to="/signup">
+            Signup
+          </Link>
+        </li>
+        <li>
+          <a className="dropdown-item" href="/login">
+            Login
+          </a>
+        </li>
+      </>
+    );
+  } else {
+    hanaLink = (
+      <>
+        <li>
+          <Link className="nav-link active" to="/my&nbsptrips">
+            My&nbsp;Trips
+          </Link>
+        </li>
+        <li>
+          <Link className="nav-link active" to="/favorites">
+            Favorites
+          </Link>
+        </li>
+      </>
+    );
+  }
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -26,17 +60,7 @@ export function Header() {
                   Home
                 </a>
               </li>
-              <li>
-                <a className="nav-link active" href="/favorites">
-                  Favorites
-                </a>
-              </li>
-
-              <li>
-                <a className="nav-link active" href="/my&nbsptrips">
-                  My&nbsp;Trips
-                </a>
-              </li>
+              {hanaLink}
 
               <li className="nav-item dropdown">
                 <a
@@ -49,27 +73,25 @@ export function Header() {
                   Profile
                 </a>
                 <ul className="dropdown-menu">
-                  <li>
-                    <a className="dropdown-item" href="/signup">
-                      Signup
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="/login">
-                      Login
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="/logout">
-                      Logout
-                    </a>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
+                  {authenticationLinks}
+                  {localStorage.jwt && (
+                    <>
+                      <li>
+                        <hr className="dropdown-divider" />
+                      </li>
+                      <li>
+                        <a className="dropdown-item" href="/logout">
+                          Logout
+                        </a>
+                      </li>
+                      <li>
+                        <hr className="dropdown-divider" />
+                      </li>
+                    </>
+                  )}
                   {/* <li>
                   <a className="dropdown-item" href="#">
-                    Something else here
+                  Something else here
                   </a>
                 </li> */}
                 </ul>
@@ -77,7 +99,7 @@ export function Header() {
 
               {/* <li className="nav-item">
               <a className="nav-link disabled" aria-disabled="true">
-                Disabled
+              Disabled
               </a>
             </li> */}
             </ul>

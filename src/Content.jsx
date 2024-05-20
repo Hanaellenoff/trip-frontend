@@ -122,7 +122,7 @@ export function Content() {
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<LogoutLink />} />
         <Route path="/favorites" element={<FavoritesIndex favorites={favorites} onShowTrip={handleShowTrip} />} />
-        <Route path="/mytrips" element={<MyTripsIndex myTrips={myTrips} onShowTrip={handleShowTrip} />} />
+        <Route path="/my&nbsptrips" element={<MyTripsIndex myTrips={myTrips} onShowTrip={handleShowTrip} />} />
         <Route
           path="/"
           element={
