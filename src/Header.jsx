@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 export function Header() {
   let authenticationLinks;
   let hanaLink;
+  let isLoggedIn;
   if (localStorage.jwt === undefined) {
+    isLoggedIn = false;
     authenticationLinks = (
       <>
         <li>
@@ -19,6 +21,7 @@ export function Header() {
       </>
     );
   } else {
+    isLoggedIn = true;
     hanaLink = (
       <>
         <li>
@@ -36,7 +39,8 @@ export function Header() {
   }
 
   return (
-    <div>
+    // <div id="top-menu">
+    <div className="bottom_50px">
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
           <a className="navbar-brand" href="/">

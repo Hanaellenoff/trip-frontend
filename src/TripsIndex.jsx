@@ -61,40 +61,37 @@ export function TripsIndex(props) {
                   <button type="button" className="btn btn-outline-danger" onClick={() => handleClick(trip.id)}>
                     Delete Trip
                   </button>
-                  <div
-                    className={`btn btn-secondary bg-transparent border-0`}
-                    onClick={() => {
-                      handleFavorite(trip.id);
-                      window.location.reload();
-                    }}
-                    style={{ position: "relative" }}
-                  >
-                    <i
-                      className={`bi ${
-                        isFavorited.includes(trip.id) ? "bi-heart-fill text-danger fs-4" : "bi-heart text-black fs-4"
-                      }`}
-                      style={{ transition: "color 0.3s" }}
-                    ></i>
-                    <i // Add another heart icon for hover effect
-                      className={`bi bi-heart-fill text-danger fs-4`}
-                      style={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        opacity: 0,
-                        transition: "opacity 0.3s",
-                      }}
-                    ></i>
-                  </div>
-                  <button
-                    className="button_style"
-                    onClick={() => {
-                      handleMyTrips(trip.id);
-                      window.location.reload();
-                    }}
-                  >
-                    Add to My Trips
-                  </button>
+                  {localStorage.jwt !== undefined && (
+                    <>
+                      <div
+                        className={`btn btn-secondary bg-transparent border-0`}
+                        onClick={() => {
+                          handleFavorite(trip.id);
+                          window.location.reload();
+                        }}
+                        style={{ position: "relative" }}
+                      >
+                        <i
+                          className={`bi ${
+                            isFavorited.includes(trip.id)
+                              ? "bi-heart-fill text-danger fs-4"
+                              : "bi-heart text-black fs-4"
+                          }`}
+                          style={{ transition: "color 0.3s" }}
+                        ></i>
+                      </div>
+
+                      <button
+                        className="button_style"
+                        onClick={() => {
+                          handleMyTrips(trip.id);
+                          window.location.reload();
+                        }}
+                      >
+                        Add to My Trips
+                      </button>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
