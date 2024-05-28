@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import axios from "axios";
 import { useState } from "react";
 const jwt = localStorage.getItem("jwt");
@@ -5,12 +6,12 @@ if (jwt) {
   axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
 }
 
-export function Login() {
+export function Login({ setLoginMessage }) {
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setErrors([]);
+    setErrors("");
     const params = new FormData(event.target);
     axios
       .post("http://localhost:3000/sessions.json", params)
@@ -19,21 +20,23 @@ export function Login() {
         axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
         localStorage.setItem("jwt", response.data.jwt);
         event.target.reset();
+        setLoginMessage("Login Succesful");
         window.location.href = "#";
       })
       .catch((error) => {
         console.log(error.response);
         setErrors("Invalid email or password");
+        setLoginMessage("Invalid email or password");
       });
   };
   return (
     <div id="login">
       <h1>Login</h1>
-      <ul>
-        {errors.map((error) => (
-          <li key={error}>{error}</li>
-        ))}
-      </ul>
+      {errors && (
+        <ul>
+          <li>{errors}</li>
+        </ul>
+      )}
       <form onSubmit={handleSubmit}>
         <div>
           Email: <input name="email" type="email" />

@@ -14,13 +14,14 @@ import { TripsShow } from "./TripsShow";
 import { FavoritesIndex } from "./FavoritesIndex";
 import { MyTripsIndex } from "./MyTripsIndex";
 
-export function Content() {
-  const [trips, setTrips] = useState([]);
+export function Content(props) {
+  // const [trips, setTrips] = useState([]);
   const [places, setPlaces] = useState([]);
   const [isTripsShowVisable, setisTripsShowVisable] = useState(false);
   const [currentTrip, setCurrentTrip] = useState({});
   const [favorites, setFavorites] = useState([]);
   const [myTrips, setMyTrips] = useState([]);
+  const [loginMessage, setLoginMessage] = useState([]);
 
   const handleCreateTrip = (params, successCallBack) => {
     console.log("handleCreateTrip", params);
@@ -79,13 +80,13 @@ export function Content() {
   };
 
   useEffect(() => {
-    const handleTripsIndex = () => {
-      console.log("handleTripsIndex");
-      axios.get(TRIPS_API_URL).then((response) => {
-        console.log("axios");
-        setTrips(response.data);
-      });
-    };
+    // const handleTripsIndex = () => {
+    //   console.log("handleTripsIndex");
+    //   axios.get(TRIPS_API_URL).then((response) => {
+    //     console.log("axios");
+    //     setTrips(response.data);
+    //   });
+    // };
     const handlePlacesIndex = () => {
       console.log("handlePlacesndex");
       axios.get(PLACES_API_URL).then((response) => {
@@ -109,7 +110,7 @@ export function Content() {
       });
     };
 
-    handleTripsIndex();
+    // handleTripsIndex();
     handlePlacesIndex();
     handleFavoritesIndex();
     handleMyTripsIndex();
@@ -117,9 +118,10 @@ export function Content() {
 
   return (
     <main>
+      {loginMessage && <div className="login-message"> {loginMessage} </div>}
       <Routes>
         <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login />} setLoginMessage={setLoginMessage} />
         <Route path="/logout" element={<LogoutLink />} />
         <Route path="/favorites" element={<FavoritesIndex favorites={favorites} onShowTrip={handleShowTrip} />} />
         <Route path="/my&nbsptrips" element={<MyTripsIndex myTrips={myTrips} onShowTrip={handleShowTrip} />} />
@@ -131,7 +133,7 @@ export function Content() {
               <TripsIndex
                 myTrips={myTrips}
                 favorites={favorites}
-                trips={trips}
+                trips={props.trips}
                 trip={currentTrip}
                 onShowTrip={handleShowTrip}
                 onDestroyTrip={handleDestroyTrip}
