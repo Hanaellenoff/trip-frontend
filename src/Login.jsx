@@ -7,7 +7,7 @@ if (jwt) {
 }
 
 export function Login({ setLoginMessage }) {
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -20,13 +20,16 @@ export function Login({ setLoginMessage }) {
         axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
         localStorage.setItem("jwt", response.data.jwt);
         event.target.reset();
-        setLoginMessage("Login Succesful");
-        window.location.href = "#";
+        window.location.href = "/";
       })
       .catch((error) => {
-        console.log(error.response);
-        setErrors("Invalid email or password");
-        setLoginMessage("Invalid email or password");
+        console.log("Login error", error.response);
+        if (error.response && error.response.status === 401) {
+          setErrors("Invalid email or password");
+          setLoginMessage("Invalid email or password");
+        } else {
+          setLoginMessage("Login Succesful");
+        }
       });
   };
   return (
@@ -39,10 +42,10 @@ export function Login({ setLoginMessage }) {
       )}
       <form onSubmit={handleSubmit}>
         <div>
-          Email: <input name="email" type="email" />
+          Email: <input name="email" type="email" required />
         </div>
         <div>
-          Password: <input name="password" type="password" />
+          Password: <input name="password" type="password" required />
         </div>
         <button className="button_style" type="submit">
           Login

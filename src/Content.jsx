@@ -21,7 +21,7 @@ export function Content(props) {
   const [currentTrip, setCurrentTrip] = useState({});
   const [favorites, setFavorites] = useState([]);
   const [myTrips, setMyTrips] = useState([]);
-  const [loginMessage, setLoginMessage] = useState([]);
+  const [loginMessage, setLoginMessage] = useState("");
 
   const handleCreateTrip = (params, successCallBack) => {
     console.log("handleCreateTrip", params);
