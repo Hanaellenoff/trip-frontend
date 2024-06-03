@@ -1,12 +1,18 @@
 /* eslint-disable react/prop-types */
 import axios from "axios";
-import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "@fortawesome/fontawesome-free/css/all.css";
 
 export function TripsIndex(props) {
   const [searchFilter, setSearchFilter] = useState("");
+  const [displayedTrips, setDisplayedTrips] = useState(props.trips);
+
+  const handleSearch = () => {
+    setDisplayedTrips(props.trips.filter((trip) => trip.title.toLowerCase().includes(searchFilter.toLowerCase())));
+    setSearchFilter("");
+    console.log("search barrr", props.trip);
+  };
 
   const handleClick = (tripId) => {
     console.log("HERE:", tripId);
@@ -45,6 +51,10 @@ export function TripsIndex(props) {
   const isFavorited = props.favorites.map((trip) => trip.id);
   const isMyTrips = props.myTrips.map((trip) => trip.id);
 
+  useEffect(() => {
+    setDisplayedTrips("");
+  }, [props.trips]);
+
   return (
     <div>
       <form className="d-flex" role="search">
@@ -63,9 +73,17 @@ export function TripsIndex(props) {
             props.trips.map((trip) => <option key={trip.id}>{trip.title}</option>)
           )}
         </datalist>
-        <button className="btn btn-outline-success" type="submit">
+        <button className="btn btn-outline-success" type="submit" onClick={handleSearch}>
           Search
         </button>
+        {/* SEARCH INDEX  */}
+        {/* {displayedTrips.map((trip) => (
+          <div id={props}>
+          <p>Hiiiii</p>
+          </div>
+        ))} */}
+
+        {/* INDEX */}
       </form>
       <div id="bannerimage"></div>
       <div className="container">
