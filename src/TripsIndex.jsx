@@ -59,9 +59,10 @@ export function TripsIndex(props) {
 
   return (
     <div>
-      <form className="d-flex" role="search" onSubmit={handleSearch}>
+      {/* SEARCH BAR */}
+      <form className="d-flex search-bar" role="search" onSubmit={handleSearch}>
         <input
-          className="form-control me-2"
+          className="form-control search-input"
           type="search"
           placeholder="Search"
           aria-label="Search"
@@ -76,7 +77,7 @@ export function TripsIndex(props) {
             props.trips.map((trip) => <option key={trip.id}>{trip.title}</option>)
           )}
         </datalist>
-        <button className="btn btn-outline-success" type="submit" onClick={handleSearch}>
+        <button className="btn btn-outline-success search-button" type="submit" onClick={handleSearch}>
           Search
         </button>
         {/* SEARCH INDEX  */}
