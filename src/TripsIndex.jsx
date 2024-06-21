@@ -7,10 +7,12 @@ import "@fortawesome/fontawesome-free/css/all.css";
 export function TripsIndex(props) {
   const [searchFilter, setSearchFilter] = useState("");
   const [displayedTrips, setDisplayedTrips] = useState(props.trips);
+  console.log("its right here", props.trips);
 
   const handleSearch = () => {
+    event.preventDefault();
     setDisplayedTrips(props.trips.filter((trip) => trip.title.toLowerCase().includes(searchFilter.toLowerCase())));
-    setSearchFilter("");
+    console.log("displayed trips", displayedTrips);
     console.log("search barrr", props.trip);
   };
 
@@ -57,13 +59,15 @@ export function TripsIndex(props) {
 
   return (
     <div>
-      <form className="d-flex" role="search">
+      {/* SEARCH BAR */}
+      <form className="d-flex search-bar" role="search" onSubmit={handleSearch}>
         <input
-          className="form-control me-2"
+          className="form-control search-input"
           type="search"
           placeholder="Search"
           aria-label="Search"
           list="vacations"
+          value={searchFilter}
           onChange={(event) => setSearchFilter(event.target.value)}
         />
         <datalist id="vacations">
@@ -73,13 +77,13 @@ export function TripsIndex(props) {
             props.trips.map((trip) => <option key={trip.id}>{trip.title}</option>)
           )}
         </datalist>
-        <button className="btn btn-outline-success" type="submit" onClick={handleSearch}>
+        <button className="btn btn-outline-success search-button" type="submit" onClick={handleSearch}>
           Search
         </button>
         {/* SEARCH INDEX  */}
         {/* {displayedTrips.map((trip) => (
-          <div id={props}>
-          <p>Hiiiii</p>
+          <div key={trip.id}>
+            <img src={trip.image_url} className="card-img-top h-100" alt="Trip" />
           </div>
         ))} */}
 
