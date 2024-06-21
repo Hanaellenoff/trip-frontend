@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+import "bootstrap-icons/font/bootstrap-icons.css";
+
 export function PlacesIndex(props) {
   const handleSubmit = (event) => {
     console.log("hana", props.places.id);
@@ -20,11 +22,25 @@ export function PlacesIndex(props) {
       <h1>Places</h1>
       {tp.map((place, index) => (
         <div key={index}>
-          <h2>{place.name}</h2>
-          <p>Trip Number: {place.trip_id}</p>
-          <p>{place.address}</p>
-          <p>{place.description}</p>
-          <img src={place.image_url} />
+          <img src={place.image_url} className="card-img-top" />
+          <div className="card-body">
+            <h5 className="card-title">{place.name}</h5>
+            <p className="card-text">{place.description}</p>
+          </div>
+          <ul className="list-group list-group-flush">
+            <li className="list-group-item">Trips Number: {place.trip_id}</li>
+            <li className="list-group-item">Address: {place.address}</li>
+          </ul>
+          <div className="card-body">
+            {/* <a href="#" className="card-link">
+              Card link
+            </a>
+            <a href="#" className="card-link">
+              Another link
+            </a> */}
+          </div>
+
+          {/* <img src={place.image_url} /> */}
 
           {/* form */}
           <form onSubmit={handleSubmit}>
